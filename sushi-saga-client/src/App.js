@@ -6,12 +6,20 @@ import Table from './containers/Table';
 const API = "http://localhost:3000/sushis"
 
 class App extends Component {
+  state = {
+    eatenSushis: [],
+    customerCash: 100
+  }
+
+  passPlate = () => {
+    this.state.eatenSushis << 'x'
+  }
 
   render() {
     return (
       <div className="app">
-        <SushiContainer />
-        <Table />
+        <SushiContainer eat={this.passPlate} cash={this.state.customerCash}/>
+        <Table eaten={this.state.eatenSushis} cash={this.state.customerCash}/>
       </div>
     );
   }
